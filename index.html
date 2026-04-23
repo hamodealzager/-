@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>محرر العملات الرقمية</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <h1>محرر العملات الرقمية</h1>
+        <p>أضف عملاتك الرقمية، عدّل الكمية، وراقب قيمتها التقديرية بالدولار.</p>
+      </header>
+
+      <section class="card">
+        <h2>إضافة عملة</h2>
+        <form id="currency-form" class="grid">
+          <label>
+            اسم العملة
+            <input id="name" type="text" placeholder="Bitcoin" required />
+          </label>
+          <label>
+            الرمز
+            <input id="symbol" type="text" placeholder="BTC" maxlength="8" required />
+          </label>
+          <label>
+            الكمية
+            <input id="amount" type="number" step="any" min="0" placeholder="0.5" required />
+          </label>
+          <label>
+            سعر الوحدة (USD)
+            <input id="price" type="number" step="any" min="0" placeholder="64000" required />
+          </label>
+          <button type="submit" class="primary">إضافة</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="table-header">
+          <h2>محفظتي</h2>
+          <p id="total">إجمالي القيمة: $0.00</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>العملة</th>
+                <th>الرمز</th>
+                <th>الكمية</th>
+                <th>السعر</th>
+                <th>القيمة</th>
+                <th>إجراءات</th>
+              </tr>
+            </thead>
+            <tbody id="currency-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <template id="row-template">
+      <tr>
+        <td data-field="name"></td>
+        <td data-field="symbol"></td>
+        <td>
+          <input data-field="amount" type="number" step="any" min="0" />
+        </td>
+        <td>
+          <input data-field="price" type="number" step="any" min="0" />
+        </td>
+        <td data-field="value"></td>
+        <td>
+          <button data-action="save" class="secondary">حفظ</button>
+          <button data-action="delete" class="danger">حذف</button>
+        </td>
+      </tr>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
